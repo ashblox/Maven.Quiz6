@@ -1,7 +1,11 @@
 package rocks.zipcode.io.collections;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectionUtils {
 
@@ -11,7 +15,7 @@ public class CollectionUtils {
      * @return list with identical contents
      */
     public static <E> List<E> toList(Collection collection) {
-        return null;
+        return new ArrayList<>(collection);
     }
 
     /**
@@ -20,7 +24,12 @@ public class CollectionUtils {
      * @return true if `nestedCollection` contains a collection with contents identical to `collection`
      */
     public static Boolean contains(Collection<? extends Collection<?>> nestedCollection, Collection<?> collection) {
-        return null;
+        for (Collection<?> collection1 : nestedCollection) {
+            if (collection1.equals(collection)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -28,7 +37,7 @@ public class CollectionUtils {
      * @return a single collection containing each of the collections passed in as an argument
      */
     public static Collection<? extends Collection<?>> nest(Collection<?>... collections) {
-        return null;
+        return Arrays.asList(collections);
     }
 
     /**
@@ -36,6 +45,6 @@ public class CollectionUtils {
      * @return a single collection containing the aggregate contents of each collection passed in as an argument
      */
     public static Collection<?> flatten(Collection<?>... collections) {
-        return null;
+        return Stream.of(collections).flatMap(Collection::stream).collect(Collectors.toList());
     }
 }

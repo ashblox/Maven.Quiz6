@@ -10,7 +10,13 @@ public class ArrayUtils {
      * @return array of all integers between `start` and `stop`
      */
     public static Integer[] getRange(Integer start, Integer end) {
-        return null;
+        Integer[] integers = new Integer[(end - start) + 1];
+        int counter = 0;
+        for (int i = start; i <= end ; i++) {
+            integers[counter] = i;
+            counter ++;
+        }
+        return integers;
     }
 
     /**
@@ -18,7 +24,11 @@ public class ArrayUtils {
      * @return array with identical contents in primitive-array form
      */
     public static char[] unbox(Character[] array) {
-        return null;
+        char[] unboxed = new char[array.length];
+        for (int i = 0; i < array.length; i++) {
+            unboxed[i] = array[i];
+        }
+        return unboxed;
     }
 
     /**
@@ -26,6 +36,10 @@ public class ArrayUtils {
      * @return array with identical contents in nonprimitive-array form
      */
     public static Character[] box(char[] array) {
-        return null;
+        Character[] boxed = new Character[array.length];
+        for (int i = 0; i < array.length; i++) {
+            boxed[i] = array[i];
+        }
+        return boxed;
     }
 }
